@@ -34,3 +34,14 @@
       tags:
         db
     - pywps
+  tasks:
+    - name: Upgrade pip
+      command: pip install --upgrade pip
+
+    - name: Install WPS services
+      shell: make install
+      args:
+        chdir: "{{ src_dir }}/{{ item.repo|basename }}"
+      environment:
+        PATH: /usr/local/anaconda/envs/{{ item.repo|basename }}/bin:{{ ansible_env.PATH }}
+      with_items: "{{ wps_services }}"
