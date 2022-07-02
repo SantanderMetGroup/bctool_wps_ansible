@@ -1,3 +1,0 @@
-server_name: "{{ ansible_all_ipv4_addresses[1] }}"
-service_user: root
-service_add_user: false
